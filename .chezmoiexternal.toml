@@ -1,0 +1,5 @@
+[".local/src/oh-my-zsh"]
+	type = "archive"
+	url = "https://github.com/ohmyzsh/ohmyzsh/archive/a779d6563ffb2f0093b4b74c8d5ff0982fa3e930.zip"
+	extract = true
+	stripComponents = 1

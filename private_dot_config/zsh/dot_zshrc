@@ -1,0 +1,21 @@
+export ZSH=$HOME/.local/src/oh-my-zsh
+export PATH=$HOME/bin:$HOME/.local/bin:$PATH
+
+# Oh My Zsh settings
+zstyle ':omz:update' mode disabled
+ZSH_THEME="robbyrussell"
+COMPLETION_WAITING_DOTS="true"
+HIST_STAMPS="yyyy-mm-dd"
+plugins=(git)
+
+source $ZSH/oh-my-zsh.sh
+
+# Set $EDITOR depending on if we're in a GUI.
+if [[ -n $DISPLAY ]]; then
+    export EDITOR=kate
+else
+    export EDITOR=nano
+fi
+
+source $ZDOTDIR/xdgify.sh
+source $ZDOTDIR/aliases.sh
