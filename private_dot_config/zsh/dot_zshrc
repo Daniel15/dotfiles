@@ -1,14 +1,21 @@
 export ZSH=$HOME/.local/src/oh-my-zsh
 export PATH=$HOME/bin:$HOME/.local/bin:$PATH
 
+# History settings
+HIST_STAMPS="yyyy-mm-dd"
+HISTSIZE=1000000
+SAVEHIST=1000000
+setopt APPEND_HISTORY
+
 # Oh My Zsh settings
 zstyle ':omz:update' mode disabled
-ZSH_THEME="robbyrussell"
 COMPLETION_WAITING_DOTS="true"
-HIST_STAMPS="yyyy-mm-dd"
+ZSH_THEME="robbyrussell"
+ZSH_TMUX_AUTOQUIT="false"
 plugins=(
     fzf
     git
+    mercurial
     zsh-autosuggestions
     # This one needs to go last
     zsh-syntax-highlighting
@@ -16,12 +23,38 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-# Set $EDITOR depending on if we're in a GUI.
-if [[ -n $DISPLAY ]]; then
+# Determine environment
+if [[ $HOSTNAME == *.fbinfra.net || $HOSTNAME == *.facebook.com ]]; then
+    export DANIEL15_ENV='work-devserver'
+elif [[ $HOSTNAME == danlo-fedora-* ]]; then
+    export DANIEL15_ENV='work-client'
+# TODO: Add personal servers
+else
+    export DANIEL15_ENV='home'
+fi
+
+# Configure EDITOR
+if [[ $TERM_PROGRAM == 'vscode' ]]; then
+    # Terminal in VS Code - Should open file in VS Code to edit
+    if [[ $DANIEL15_ENV == "work-devserver" || $DANIEL15_ENV == 'work-client' ]]; then
+        export EDITOR='code-fb --wait'
+    else
+        export EDITOR='code --wait'
+    fi
+elif [[ -n $DISPLAY ]]; then
+    # GUI terminal, NOT in VS Code
     export EDITOR=kate
 else
+    # SSH session, TTY, etc.
     export EDITOR=nano
 fi
+
+# Shim for environments where `_dotfiles_scm_info` is not available (non-work)
+function _dotfiles_scm_info {}
+
+# FB-specific initialization
+[[ -f /usr/facebook/ops/rc/master.zshrc ]] && source /usr/facebook/ops/rc/master.zshrc
+[[ -f /usr/share/scm/scm-prompt.sh ]] && source /usr/share/scm/scm-prompt.sh
 
 source $ZDOTDIR/xdgify.sh
 source $ZDOTDIR/aliases.sh
