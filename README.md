@@ -5,10 +5,12 @@ My dotfiles. This is a work in progress.
 Where possible, files follow the [XDG Base Directory Specification](https://wiki.archlinux.org/title/XDG_Base_Directory), which prefers placing files in the `.config` and `.local` directories instead of directly in `$HOME`.
 
 I use these dotfiles in four different environments:
- - Home PCs, running Debian testing
- - Personal servers, running Debian stable
- - Work PCs, running Fedora
- - Work development environment, running CentOS
+ - `home`: Home PCs, running Debian testing
+ - `server`: Personal servers, running Debian stable
+ - `work-client`: Work PCs, running Fedora
+ - `work-devserver`: Work development environment, running CentOS
+
+The current environment is available in the `$DANIEL15_ENV` shell variable if needed (set in `.zshrc`).
 
 # Usage
 
