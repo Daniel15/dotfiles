@@ -1,4 +1,7 @@
 export ZSH=$HOME/.local/src/oh-my-zsh
+# Moving custom Oh My Zsh files out of $ZSH to avoid weirdness with manually
+# edited files within a Chezmoi external directory.
+ZSH_CUSTOM=$HOME/.local/src/oh-my-zsh-custom
 export PATH=$HOME/bin:$HOME/.local/bin:$PATH
 
 # History settings
@@ -10,7 +13,7 @@ setopt APPEND_HISTORY
 # Oh My Zsh settings
 zstyle ':omz:update' mode disabled
 COMPLETION_WAITING_DOTS="true"
-ZSH_THEME="robbyrussell"
+ZSH_THEME="daniel15"
 ZSH_TMUX_AUTOQUIT="false"
 plugins=(
     fzf
