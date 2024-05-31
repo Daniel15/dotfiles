@@ -11,4 +11,9 @@ if [[ $DANIEL15_ENV == "work-devserver" ]]; then
 
   alias jfsd='jf submit --draft'
   alias jfssd='jf submit --stack --draft'
+
+  # Basic fastmod to rename a symbol based on BigGrep results
+  function fastmod-rename() {
+    fastmod "\b$1\b" "$2" `tbgs -sl "$1"`
+  }
 fi

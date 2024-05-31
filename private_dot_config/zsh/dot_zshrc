@@ -39,7 +39,7 @@ fi
 # Configure EDITOR
 if [[ $TERM_PROGRAM == 'vscode' ]]; then
     # Terminal in VS Code - Should open file in VS Code to edit
-    if [[ $DANIEL15_ENV == "work-devserver" || $DANIEL15_ENV == 'work-client' ]]; then
+    if [[ $DANIEL15_ENV == 'work-devserver' || $DANIEL15_ENV == 'work-client' ]]; then
         export EDITOR='code-fb --wait'
     else
         export EDITOR='code --wait'
@@ -58,6 +58,10 @@ function _dotfiles_scm_info {}
 # FB-specific initialization
 [[ -f /usr/facebook/ops/rc/master.zshrc ]] && source /usr/facebook/ops/rc/master.zshrc
 [[ -f /usr/share/scm/scm-prompt.sh ]] && source /usr/share/scm/scm-prompt.sh
+if [[ $DANIEL15_ENV == 'work-devserver' ]]; then
+    export HTTP_PROXY=http://fwdproxy:8080
+    export HTTPS_PROXY=http://fwdproxy:8080
+fi
 
 source $ZDOTDIR/xdgify.sh
 source $ZDOTDIR/aliases.sh
