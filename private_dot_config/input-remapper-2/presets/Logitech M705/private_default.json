@@ -1,0 +1,28 @@
+[
+    {
+        "input_combination": [
+            {
+                "type": 2,
+                "code": 6,
+                "origin_hash": "ed94ae4ae00baebce72b5b6c80a43ea0",
+                "analog_threshold": -1
+            }
+        ],
+        "target_uinput": "keyboard",
+        "output_symbol": "Shift_L + Control_L + Tab",
+        "mapping_type": "key_macro"
+    },
+    {
+        "input_combination": [
+            {
+                "type": 2,
+                "code": 6,
+                "origin_hash": "ed94ae4ae00baebce72b5b6c80a43ea0",
+                "analog_threshold": 1
+            }
+        ],
+        "target_uinput": "keyboard",
+        "output_symbol": "Control_L + Tab",
+        "mapping_type": "key_macro"
+    }
+]
