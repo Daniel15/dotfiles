@@ -4,4 +4,4 @@ source auto
 
 ignore regex "Desktops" "Id_.*"
 ignore regex "Tiling\\]\\[.*" ".*"
-ignore section Xwayland
+ignore section "Xwayland"
