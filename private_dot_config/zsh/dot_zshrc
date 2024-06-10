@@ -59,8 +59,19 @@ function _dotfiles_scm_info {}
 [[ -f /usr/facebook/ops/rc/master.zshrc ]] && source /usr/facebook/ops/rc/master.zshrc
 [[ -f /usr/share/scm/scm-prompt.sh ]] && source /usr/share/scm/scm-prompt.sh
 if [[ $DANIEL15_ENV == 'work-devserver' ]]; then
-    export HTTP_PROXY=http://fwdproxy:8080
-    export HTTPS_PROXY=http://fwdproxy:8080
+    alias curl='curl $(fwdproxy-config curl)'
+    alias wget='wget $(fwdproxy-config wget)'
+    alias chezmoi='HTTPS_PROXY=http://fwdproxy:8080 chezmoi'
+
+    function proxy_on() {
+        export HTTP_PROXY=http://fwdproxy:8080
+        export HTTPS_PROXY=http://fwdproxy:8080
+    }
+
+    function proxy_off() {
+        export HTTP_PROXY=
+        export HTTPS_PROXY=
+    }
 fi
 
 source $ZDOTDIR/xdgify.sh
