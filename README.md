@@ -5,7 +5,7 @@ My dotfiles. This is a work in progress.
 Where possible, files follow the [XDG Base Directory Specification](https://wiki.archlinux.org/title/XDG_Base_Directory), which prefers placing files in the `.config` and `.local` directories instead of directly in `$HOME`.
 
 I use these dotfiles in four different environments:
- - `home`: Home PCs, running Debian testing
+ - `home`: Home PCs, running Fedora
  - `server`: Personal servers, running Debian stable
  - `work-client`: Work PCs, running Fedora
  - `work-devserver`: Work development environment, running CentOS
