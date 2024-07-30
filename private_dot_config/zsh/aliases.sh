@@ -36,4 +36,9 @@ if [[ $DANIEL15_ENV == "work-devserver" ]]; then
   function fastmod-rename() {
     fastmod "\b$1\b" "$2" `tbgs -sl "$1"`
   }
+
+  # jest-e2e update screenshot tests (standard js1 screenshots with light and dark mode)
+  function e2escr() {
+    jest-e2e -u "$1-light-screenshot-e2e.js" "$1-dark-screenshot-e2e.js"
+  }
 fi
