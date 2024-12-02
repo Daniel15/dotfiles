@@ -76,3 +76,7 @@ fi
 
 source $ZDOTDIR/xdgify.sh
 source $ZDOTDIR/aliases.sh
+
+if [[ -o interactive ]] && (( $+commands[fastfetch] )); then
+    fastfetch
+fi
